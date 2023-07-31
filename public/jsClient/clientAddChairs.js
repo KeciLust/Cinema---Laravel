@@ -31,6 +31,7 @@ function addChairs(row, chair, arr) {
     }
     spans.forEach((el, i) => {
         el.addEventListener('click', () => {
+
             if (!el.classList.contains('buying-scheme__chair_disabled')) {
                 if (el.classList.contains('buying-scheme__chair_standart')) {
                     chairs[i] = 3;
@@ -53,10 +54,11 @@ function addChairs(row, chair, arr) {
                         el.classList.add('buying-scheme__chair_vip');
                     }
 
-                }
+                }chairsAdd.value = JSON.stringify(chairs);
             }
         });
-        chairsAdd.value = JSON.stringify(chairs);
+
+
     });
 }
 

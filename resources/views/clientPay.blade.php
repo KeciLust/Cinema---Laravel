@@ -14,7 +14,7 @@
                 <p class="ticket__info">Начало сеанса: <span
                         class="ticket__details ticket__start">{{ $bookings->time }}</span></p>
                 <p class="ticket__info">Стоимость: <span class="ticket__details ticket__cost">600</span> рублей</p>
-
+                {{$bookings}}
                 <button class="acceptin-button" onclick="location.href='ticket.html'">Получить код бронирования</button>
 
                 <p class="ticket__hint">После оплаты билет будет доступен в этом окне. Покажите
