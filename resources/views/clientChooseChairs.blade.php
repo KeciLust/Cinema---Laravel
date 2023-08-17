@@ -18,10 +18,12 @@
                 <input type="hidden" name="film" value="{{ $film->id }}">
                 <input type="hidden" name="hall" value="{{ $hall->id }}">
                 <input type="hidden" name="bookings" value="{{ $bookings->id }}">
+                <input type="hidden" name="price" class="price">
+                <input type="hidden" name="chairPay" class="chairPay">
                 <div class="buying-scheme">
                     <div class="buying-scheme__wrapper">
                         <script>
-                            addChairs({{ $hall->row }}, {{ $hall->chair }}, {{ $bookings->chairs }})
+                            addChairs({{ $hall->row }}, {{ $hall->chair }}, {{ $bookings->chairs }}, {{$hall->price}}, {{$hall->priceVip}})
                         </script>
                     </div>
                     <div class="buying-scheme__legend">
@@ -41,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="acceptin-button" type="submit">Забронировать</button>
+                <button class="acceptin-button" type="button">Забронировать</button>
             </form>
         </section>
     </main>

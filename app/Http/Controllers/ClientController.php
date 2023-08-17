@@ -46,6 +46,8 @@ class ClientController extends Controller
         $bookings = Booking::find($request->bookings);
         $bookings->chairs = $request->clientAddChairs;
         $bookings->save();
-        return view('clientPay', ['film' => $film, 'hall' => $hall, 'bookings' => $bookings]);
+        $price = $request->price;
+        $chairPay = $request->chairPay;
+        return view('clientPay', ['film' => $film, 'hall' => $hall, 'bookings' => $bookings, 'price' => $price, 'chairPay' => $chairPay]);
     }
 }

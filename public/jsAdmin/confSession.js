@@ -17,7 +17,6 @@ function addSession(arr, id) {
     let f = document.querySelector(`.addSession${id}`)
     let div = f.querySelector('.filmLenghtAddSession').value;
     let input = f.querySelector('.inputAddSession');
-    let mes = f.querySelector('.timeSession');
     let time = convertTime(f.querySelector('.timeSession').value);
     input.type = 'submit';
     if (arr != []) {
@@ -37,7 +36,6 @@ function convertTime(t) {
 }
 function valid(halls) {
     halls.forEach(el => {
-        console.log(el.films != [])
         if (el && el.chairs != [] && (el.price != 0 || el.vipPrice != 0) && el.films != []) {
             document.querySelector('.validButton').type = 'submit';
         }

@@ -24,6 +24,9 @@ class AdminController extends Controller
     }
     public function addHall(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:255'
+        ]);
         Hall::firstOrCreate(['name' => $request->name]);
         return redirect()->route('admin');
     }
@@ -34,6 +37,11 @@ class AdminController extends Controller
     }
     public function confHall(Request $request, Hall $hall)
     {
+        $validated = $request->validate([
+            'row' => 'required',
+            'chair' => 'required',
+            'chairs' => 'required|array',
+        ]);
         $hall->fill([
             'row' => $request->row,
             'chair' => $request->chair,
@@ -44,6 +52,10 @@ class AdminController extends Controller
     }
     public function confPrice(Request $request, Hall $hall)
     {
+        $validated = $request->validate([
+            'price' => 'required',
+            'priceVip' => 'required',
+        ]);
         $hall->fill([
             'price' => $request->price,
             'priceVip' => $request->priceVip
@@ -53,6 +65,12 @@ class AdminController extends Controller
     }
     public function addFilm(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'lenght' => 'required',
+            'country' => 'required',
+            'description' => 'required',
+        ]);
         Film::firstOrCreate([
             'name' => $request->name,
             'lenght' => $request->lenght,

@@ -1,7 +1,11 @@
-function addChairs(row, chair, arr) {
+function addChairs(row, chair, arr, price, priceVip) {
     let main = document.querySelector('.buying-scheme__wrapper');
     let chairs = [...arr];
     let chairsAdd = document.querySelector('.clientAddChairs');
+    let priceNew = document.querySelector('.price');
+    let priceF = 0;
+    let chairPay = [];
+    let chairF = document.querySelector('.chairPay');
     for (let i = 0; i < row; i++) {
         let div = document.createElement('div');
         div.classList.add('buying-scheme__row');
@@ -35,27 +39,44 @@ function addChairs(row, chair, arr) {
             if (!el.classList.contains('buying-scheme__chair_disabled')) {
                 if (el.classList.contains('buying-scheme__chair_standart')) {
                     chairs[i] = 3;
+                    chairPay[i] = 1;
                     el.classList.remove('buying-scheme__chair_standart');
                     el.classList.add('buying-scheme__chair_selected');
+                    priceF = priceF + price;
                 }
                 else if (el.classList.contains('buying-scheme__chair_vip')) {
                     chairs[i] = 4;
+                    chairPay[i] = 1;
                     el.classList.remove('buying-scheme__chair_vip');
                     el.classList.add('buying-scheme__chair_selected');
+                    priceF = priceF + priceVip;
                 }
                 else if (el.classList.contains('buying-scheme__chair_selected')) {
                     chairs[i] = arr[i];
+                    chairPay[i] = null;
                     if (arr[i] === 1) {
                         el.classList.remove('buying-scheme__chair_selected');
                         el.classList.add('buying-scheme__chair_standart');
+                        priceF = priceF - price;
                     }
                     if (arr[i] === 2) {
                         el.classList.remove('buying-scheme__chair_selected');
                         el.classList.add('buying-scheme__chair_vip');
+                        priceF = priceF - priceVip;
                     }
+                }
 
-                }chairsAdd.value = JSON.stringify(chairs);
             }
+            priceNew.value = priceF;
+            chairsAdd.value = JSON.stringify(chairs);
+
+            if (chairPay.includes(1)) {
+                document.querySelector('.acceptin-button').type = 'submit';
+            } else { document.querySelector('.acceptin-button').type = 'button'; }
+
+
+            chairF.value = JSON.stringify(chairPay);
+
         });
 
 
